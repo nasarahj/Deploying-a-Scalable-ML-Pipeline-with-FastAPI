@@ -91,6 +91,9 @@ def load_model(path):
 def performance_on_categorical_slice(
     data, column_name, slice_value, categorical_features, label, encoder, lb, model
 ):
+    data_slice = data[data[column_name] == slice_value]
+    if data_slice.empty:
+        return 0.0, 0.0, 0.0 
     """ Computes the model metrics on a slice of the data specified by a column name and
 
     Processes the data using one hot encoding for the categorical features and a
@@ -124,17 +127,18 @@ def performance_on_categorical_slice(
     fbeta : float
 
     """
-    slice_mask = X[cat_features] == slice_value
-    X_slice = X[slice_mask]
-    y_slice = Y[y_slice]
-
     X_slice, y_slice, _, _ = process_data(
-         X_slice, y_slice, categorical_features=[cat_features], encoder=encoder, lb=lb, training=False
+        data_slice,
+        categorical_features=categorical_features,
+        label=label,
+        training=False,
+        encoder=encoder,
+        lb=lb,
+    )
 
         # your code here
         # for input data, use data in column given as "column_name", with the slice_value 
         # use training = False
-    )
-    preds = inference(model, X_slice_processed)
+    preds = inference(model, X_slice)
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
     return precision, recall, fbeta
