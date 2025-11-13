@@ -125,7 +125,7 @@ def performance_on_categorical_slice(
     precision : float
     recall : float
     fbeta : float
-
+ 
     """
     X_slice, y_slice, _, _ = process_data(
         data_slice,

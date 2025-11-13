@@ -33,4 +33,4 @@ These evaluate how well the model is able to distingush between income classes.
 ## Ethical Considerations
 Since this dataset reflects historic socioeconomic inbalances, additional audits should be used to find biases. We should also avoid using for decision making like hiring or credit scoring. 
 ## Caveats and Recommendations
-Since this dataset is from 1994, retraining on a newer dataset would be beneficial. It would also be helpful to include safeguards against biases and insuring fairness. 
+Since this dataset is from 1994, retraining on a newer dataset would be beneficial. It would also be helpful to include safeguards against biases and insuring fairness.  
