@@ -82,7 +82,7 @@ for col in cat_features:
         count = test[test[col] == slicevalue].shape[0]
         p, r, fb = performance_on_categorical_slice(
             model = model,
-            x = test,
+            X = test.drop(columns=["salary"]),
             y = test["salary"],
             encoder = encoder,
             lb = lb,
